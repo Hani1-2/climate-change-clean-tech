@@ -28,7 +28,7 @@ with c1:
 
     # year_cross_tab_1 = pd.crosstab(data['sentiments'], data['issue'][:20])
     # print(year_cross_tab_1)
-    comp_dist = df['Country Name'].str.strip("'").value_counts()[0:10]
+    comp_dist = df['Country Name'].str.strip("'").value_counts()[:10]
     fig1 = {
         "data": [
     {
@@ -118,10 +118,16 @@ with c4:
     # ddatef. = pd.to_datetime(df.year, format='%Y')
     print(df.head())
     year = pd.unique(df.year)
-    df1 = df.loc[df["Country Name"] == 'Albania']
+    df1 = df.loc[df["Country Name"] == 'Svalbard and Jan Mayen Islands']
     df2 = df.loc[df["Country Name"] == 'Greenland']
     df3 = df.loc[df["Country Name"] == 'Canada']
-    df = pd.concat([df1,df2,df3])  
+    df4 = df.loc[df["Country Name"] == 'Armenia']
+    df5 = df.loc[df["Country Name"] == 'Mongolia']
+    df6 = df.loc[df["Country Name"] == 'Sweden']
+    df7 = df.loc[df["Country Name"] == 'Denmark']
+    df8 = df.loc[df["Country Name"] == 'Poland']
+    df9 = df.loc[df["Country Name"] == 'Czechia']
+    df = pd.concat([df1,df2,df3,df4,df5,df6,df7,df8,df9])  
     fig4 = px.line(data_frame = df, x = 'year', y = 'tem_change', color=df['Country Name'] ,labels={'x':'Year', 'y':'Temperature Change'})
     st.write(fig4)
 
@@ -134,10 +140,16 @@ with d1:
     # ddatef. = pd.to_datetime(df.year, format='%Y')
     print(df.head())
     Year = pd.unique(data.Year)
-    df1 = data.loc[data["Country Name"] == 'Albania']
+    df1 = data.loc[data["Country Name"] == 'Svalbard and Jan Mayen Islands']
     df2 = data.loc[data["Country Name"] == 'Greenland']
     df3 = data.loc[data["Country Name"] == 'Canada']
-    df_2 = pd.concat([df1,df2,df3])  
+    df4 = data.loc[data["Country Name"] == 'Armenia']
+    df5 = data.loc[data["Country Name"] == 'Mongolia']
+    df6 = data.loc[data["Country Name"] == 'Sweden']
+    df7 = data.loc[data["Country Name"] == 'Denmark']
+    df8 = data.loc[data["Country Name"] == 'Poland']
+    df9 = data.loc[data["Country Name"] == 'Czechia']
+    df_2 = pd.concat([df1,df2,df3,df4,df5,df6,df7,df8,df9])
     fig5 = px.line(data_frame = df_2, x = 'Year', y = 'Carbon dioxide (metric Ton)', color=df_2['Country Name'] ,labels={'x':'Year', 'y':'Carbon dioxide (metric Ton)'})
     st.write(fig5)
 
@@ -149,9 +161,59 @@ with d2:
     # ddatef. = pd.to_datetime(df.year, format='%Y')
     print(df.head())
     Year = pd.unique(data.Year)
-    df1 = data.loc[data["Country Name"] == 'Albania']
+    df1 = data.loc[data["Country Name"] == 'Svalbard and Jan Mayen Islands']
     df2 = data.loc[data["Country Name"] == 'Greenland']
     df3 = data.loc[data["Country Name"] == 'Canada']
-    df_3 = pd.concat([df1,df2,df3])  
+    df4 = data.loc[data["Country Name"] == 'Armenia']
+    df5 = data.loc[data["Country Name"] == 'Mongolia']
+    df6 = data.loc[data["Country Name"] == 'Sweden']
+    df7 = data.loc[data["Country Name"] == 'Denmark']
+    df8 = data.loc[data["Country Name"] == 'Poland']
+    df9 = data.loc[data["Country Name"] == 'Czechia']
+    df_3 = pd.concat([df1,df2,df3,df4,df5,df6,df7,df8,df9])  
     fig5 = px.line(data_frame = df_3, x = 'Year', y = 'GDP per capita (current US$)', color=df_3['Country Name'] ,labels={'x':'Year', 'y':'GDP per capita (current US$)'})
+    st.write(fig5)
+
+# Row E
+e1,e3 , e2 = st.columns([4,1,4])
+with e1:
+    data = pd.read_csv('climate_change_dataset.csv')
+    st.subheader('GDP Impact on Temperature Change')
+    st.markdown('We visualize the impact of GDP on temperature change in different countries')
+    # ddatef. = pd.to_datetime(df.year, format='%Y')
+    print(df.head())
+    Year = pd.unique(data.Year)
+    df1 = data.loc[data["Country Name"] == 'Svalbard and Jan Mayen Islands']
+    df2 = data.loc[data["Country Name"] == 'Greenland']
+    df3 = data.loc[data["Country Name"] == 'Canada']
+    df4 = data.loc[data["Country Name"] == 'Armenia']
+    df5 = data.loc[data["Country Name"] == 'Mongolia']
+    df6 = data.loc[data["Country Name"] == 'Sweden']
+    df7 = data.loc[data["Country Name"] == 'Denmark']
+    df8 = data.loc[data["Country Name"] == 'Poland']
+    df9 = data.loc[data["Country Name"] == 'Czechia']
+    df_4 = pd.concat([df1,df2,df3,df4,df5,df6,df7,df8,df9])  
+    fig5 = px.scatter(data_frame = df_4, x = 'GDP per capita (current US$)', y = 'tem_change', animation_frame = "Year", color=df_4['Country Name'] ,animation_group = "GDP per capita (current US$)",labels={'x':'GDP per capita (current US$)', 'y':'tem_change'})
+    st.write(fig5)
+
+with e2:
+    data = pd.read_csv('climate_change_dataset.csv')
+    st.subheader('Carbon dioxide Impact on Temperature Change')
+    st.markdown('We visualize the impact of carbon dioxide on temperature change in different countries')
+    # ddatef. = pd.to_datetime(df.year, format='%Y')
+    print(df.head())
+    Year = pd.unique(data.Year)
+    df1 = data.loc[data["Country Name"] == 'Svalbard and Jan Mayen Islands']
+    df2 = data.loc[data["Country Name"] == 'Greenland']
+    df3 = data.loc[data["Country Name"] == 'Canada']
+    df4 = data.loc[data["Country Name"] == 'Armenia']
+    df5 = data.loc[data["Country Name"] == 'Mongolia']
+    df6 = data.loc[data["Country Name"] == 'Sweden']
+    df7 = data.loc[data["Country Name"] == 'Denmark']
+    df8 = data.loc[data["Country Name"] == 'Poland']
+    df9 = data.loc[data["Country Name"] == 'Czechia']
+    df_5 = pd.concat([df1,df2,df3,df4,df5,df6,df7,df8,df9]) 
+    # px.scatter(data, x="Life_Stage", y="Overall.Bark.points", animation_frame = "Day", animation_group = "Life_Stage",
+    #        color = 'Age', hover_name = "Age", size_max = 45, facet_col = "Desexed", width = 1000) 
+    fig5 = px.scatter(data_frame = df_5, x = 'Carbon dioxide (metric Ton)', y = 'tem_change', animation_frame = "Year", animation_group = "Carbon dioxide (metric Ton)",color=df_5['Country Name'] ,labels={'x':'Carbon dioxide (metric Ton)', 'y':'tem_change'})
     st.write(fig5)
